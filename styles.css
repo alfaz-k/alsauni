@@ -1493,42 +1493,44 @@ a {
   text-align: center;
 }
 
-/* Add these styles to your styles.css to ensure clean spacing and alignment */
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.5rem 0;
-  font-size: 0.85rem;
+/* --- Footer --- */
+.site-footer {
+  background: var(--primary-color);
   color: #94a3b8;
+  padding: 3.5rem 0 1.5rem 0;
+  width: 100%;
 }
 
-.bottom-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 1.2rem;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
-.designer-link {
-  color: var(--accent-gold, #c59b27);
-  font-weight: 700;
-  text-decoration: underline;
-  transition: color 0.25s ease;
+.footer-col h4 {
+  color: #fff;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
 }
 
-.designer-link:hover {
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col ul a:hover {
   color: #fff;
 }
 
-@media (max-width: 900px) {
-  .bottom-flex {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.6rem;
-  }
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  font-size: 0.82rem;
 }
 
 /* --- Responsive Breakpoint (Mobile Fixes) --- */
@@ -1628,18 +1630,4 @@ a {
     border-bottom: none;
     margin-top: 4px;
   }
-}
-.designer-link {
-  color: #34d399;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border-bottom: 1px dashed rgba(52, 211, 153, 0.4);
-  padding-bottom: 1px;
-}
-
-.designer-link:hover {
-  color: #ffffff;
-  border-bottom-color: #34d399;
-  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
 }
