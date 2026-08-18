@@ -1,8 +1,9 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>ALSA University | Excellence in Education & Innovation</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,46 +13,63 @@
 </head>
 <body>
 
-  <!-- Live News Ticker / Announcement Bar -->
-  <div class="news-ticker">
-    <span class="ticker-badge">ANNOUNCEMENT</span>
-    <div class="ticker-track">
-      <span class="ticker-text">🎓 Admissions Open 2026-27 | ALSA Entrance Test (AET) Registration Closes Soon | Up to 100% Merit Scholarships Available!</span>
+  <!-- Top Sticky Navigation Wrapper -->
+  <div class="fixed-top-header">
+    <!-- Live News Ticker / Announcement Bar -->
+    <div class="news-ticker">
+      <div class="ticker-inner">
+        <span class="ticker-badge">AET 2026</span>
+        <div class="ticker-track">
+          <span class="ticker-text">
+            🎓 <strong>AET (ALSA Educational Trust Scholarship Entrance Test)</strong> Registration is Live! 
+            <a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer" class="ticker-link">Click here to register on AET Portal &rarr;</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp; Admissions Open 2026-27 | Up to 100% Merit Scholarships Available!
+          </span>
+        </div>
+        <button class="ticker-close" id="closeTickerBtn" aria-label="Dismiss banner">&times;</button>
+      </div>
     </div>
-    <button class="ticker-close" id="closeTickerBtn" aria-label="Dismiss banner">&times;</button>
-  </div>
 
-  
- <!-- Navigation Bar -->
-  <header class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <span class="logo-badge">ALSA</span>
-        <span class="logo-text">UNIVERSITY</span>
-      </a>
-      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <nav class="nav-menu" id="navMenu">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#academics" class="nav-link">Academics</a>
-        <a href="leadership.html" class="nav-link highlight">Leadership</a>
-        <a href="#calculator" class="nav-link">Scholarships</a>
-        <a href="#events" class="nav-link">Events</a>
-        <a href="#faq" class="nav-link">FAQs</a>
-        <a href="#apply" class="nav-link btn-nav modal-trigger" data-modal="modal-apply">Apply Now</a>
-      </nav>
-    </div>
-  </header>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="brand-logo">
+          <span class="logo-box">
+            <span class="logo-badge">ALSA</span>
+          </span>
+          <span class="logo-text">UNIVERSITY</span>
+        </a>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#academics" class="nav-link">Academics</a>
+          <a href="leadership.html" class="nav-link highlight">Leadership</a>
+          <a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-link aet-nav-btn">AET Portal ↗</a>
+          <a href="#calculator" class="nav-link">Scholarships</a>
+          <a href="#feestructure" class="nav-link modal-trigger" data-modal="modal-feestructure">Fee Structure</a>
+          <a href="#events" class="nav-link">Events</a>
+          <a href="#faq" class="nav-link">FAQs</a>
+          <a href="#apply" class="nav-link btn-nav modal-trigger" data-modal="modal-apply">Apply Now</a>
+        </nav>
+      </div>
+    </header>
+  </div>
 
   <!-- Hero Banner -->
   <section class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-content fade-in">
-      <span class="badge-pill">Empowered by ALSA Educational Trust</span>
+      <div class="hero-badges">
+        <span class="badge-pill">Empowered by ALSA Educational Trust</span>
+        <a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer" class="badge-pill aet-hero-pill">
+          ✨ Take AET Scholarship Test &rarr;
+        </a>
+      </div>
       <h1>Shaping Future Global Leaders</h1>
       <p>Pioneering interdisciplinary education, world-class research, and transformative learning experiences.</p>
       <div class="hero-actions">
@@ -160,9 +178,28 @@
   <section id="calculator" class="calc-section">
     <div class="container reveal">
       <div class="section-header">
-        <h2>Fee Structure & Scholarship Calculator</h2>
-        <p>Transparent tuition fees with merit scholarships supported by ALSA Educational Trust.</p>
+        <h2>Scholarships & Fee Structure</h2>
+        <p>Take the official <strong>AET (ALSA Educational Trust Entrance Test)</strong> for up to 100% tuition waivers.</p>
         <div class="header-line"></div>
+      </div>
+
+      <!-- AET Highlight Card -->
+      <div class="aet-banner-card">
+        <div class="aet-content">
+          <span class="aet-badge">Official Initiative</span>
+          <h3>AET — ALSA Educational Trust Scholarship Entrance Test</h3>
+          <p>The gateway to prestigious merit scholarships across Engineering, Management, and Applied Sciences. Test your aptitude, secure your rank, and receive scholarship coverage.</p>
+          <div class="aet-perks">
+            <span>✓ 100% Online Proctored Exam</span>
+            <span>✓ Instant Result & Merit Rank</span>
+            <span>✓ Direct Trust Fee Waivers</span>
+          </div>
+        </div>
+        <div class="aet-action-wrapper">
+          <a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary aet-main-btn">
+            Visit AET Portal & Register ↗
+          </a>
+        </div>
       </div>
 
       <!-- PDF Banner Card -->
@@ -316,6 +353,19 @@
       <div class="events-grid">
         <div class="event-card">
           <div class="event-date">
+            <span class="day">AET</span>
+            <span class="month">2026</span>
+          </div>
+          <div class="event-info">
+            <span class="event-tag">Entrance Exam</span>
+            <h3>ALSA Scholarship Entrance Test (AET)</h3>
+            <p>Online aptitude exam for merit scholarship awards. Apply via the official portal.</p>
+            <a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer" class="aet-inline-link">Open AET Portal &rarr;</a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">
             <span class="day">18</span>
             <span class="month">SEP</span>
           </div>
@@ -339,19 +389,6 @@
             <span class="event-venue">📍 ALSA Convention Center</span>
           </div>
         </div>
-
-        <div class="event-card">
-          <div class="event-date">
-            <span class="day">12</span>
-            <span class="month">NOV</span>
-          </div>
-          <div class="event-info">
-            <span class="event-tag">Cultural Fest</span>
-            <h3>SANSKRITI Annual Youth Cultural Expo</h3>
-            <p>Celebrating music, drama, dance, and creative arts across Indian & international chapters.</p>
-            <span class="event-venue">📍 Open Air Theater</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -366,6 +403,16 @@
       </div>
 
       <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the AET (ALSA Educational Trust) Entrance Test?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>AET is the official university scholarship entrance examination. Students appearing for AET can secure up to a 100% tuition waiver across all faculties. You can register directly at <a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-blue); font-weight:700;">aet-home.vercel.app</a>.</p>
+          </div>
+        </div>
+
         <div class="faq-item">
           <button class="faq-question">
             <span>What are the eligibility criteria for B.Tech CSE programs?</span>
@@ -558,7 +605,7 @@
       <div class="modal-header-sticky">
         <div class="modal-header-text">
           <span class="card-tag">Faculty of Technology & Engineering</span>
-           preliminary Specialization Programs</h2>
+          <h2>Degree & Specialization Programs</h2>
         </div>
         <button class="modal-close" aria-label="Close modal">&times;</button>
       </div>
@@ -686,16 +733,19 @@
     <div class="container footer-grid">
       <div class="footer-col">
         <div class="brand-logo footer-logo">
-          <span class="logo-badge">ALSA</span>
-          <span class="logo-text">UNIVERSITY</span>
+          <span class="logo-box">
+            <span class="logo-badge">ALSA</span>
+          </span>
+          <span class="logo-text" style="color:#fff;">UNIVERSITY</span>
         </div>
-        <p>A flagship educational endeavor by <strong>ALSA Educational Trust</strong> dedicated to global academic standards and transformative innovation.</p>
+        <p>A flagship educational endeavor by <strong>ALSA Educational Trust</strong> dedicated to global academic standards, scientific inquiry, and transformative innovation.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="leadership.html">Leadership & Governance</a></li>
+          <li><a href="https://aet-home.vercel.app/" target="_blank" rel="noopener noreferrer">AET Scholarship Test Portal ↗</a></li>
           <li><a href="#academics">Academic Programs</a></li>
           <li><a href="fee-structure.pdf" target="_blank">Download Fee Structure (PDF)</a></li>
           <li><a href="#calculator">Scholarships</a></li>
