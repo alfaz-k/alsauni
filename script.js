@@ -1,7 +1,6 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Target Destination Email (Locked & Non-Editable)
   const DESTINATION_EMAIL = 'kaltex.alfaz@gmail.com';
 
   // Mobile Menu Toggle
@@ -11,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileBtn && navMenu) {
     mobileBtn.addEventListener('click', () => {
       navMenu.classList.toggle('open');
+    });
+
+    // Close menu when clicking on any navigation link in mobile
+    document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+      });
     });
   }
 
@@ -23,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Modal Triggers Logic (Course Modals & Apply Form Modal)
+  // Modal Triggers Logic
   const modalTriggers = document.querySelectorAll('.modal-trigger');
   const modalCloses = document.querySelectorAll('.modal-close');
   const modalOverlays = document.querySelectorAll('.modal-overlay');
@@ -61,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Automatically lock destination email input on page load
+  // Lock Destination Email Input
   const targetEmailInput = document.getElementById('targetEmail');
   if (targetEmailInput) {
     targetEmailInput.value = DESTINATION_EMAIL;
@@ -70,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     targetEmailInput.style.cursor = 'not-allowed';
   }
 
-  // Interactive Fee & Scholarship Calculator
+  // Scholarship Calculator
   const calcStream = document.getElementById('calcStream');
   const calcMarks = document.getElementById('calcMarks');
   const marksValue = document.getElementById('marksValue');
@@ -113,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (calcStream && calcMarks) {
     calcStream.addEventListener('change', updateCalculator);
     calcMarks.addEventListener('input', updateCalculator);
-    updateCalculator(); // Initialize default calculation
+    updateCalculator();
   }
 
-  // Campus Facilities Showcase Tabs
+  // Facilities Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
@@ -133,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // FAQ Accordion Toggle
+  // FAQ Accordion
   const faqQuestions = document.querySelectorAll('.faq-question');
   faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
@@ -148,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Admission Form Handling with Direct Email Integration & Animation
+  // Application Form AJAX
   const admissionForm = document.getElementById('admissionForm');
   const submitBtn = document.getElementById('submitBtn');
   const applyFormContainer = document.getElementById('apply-form-container');
@@ -166,12 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const program = document.getElementById('program').value;
       const message = document.getElementById('message').value;
 
-      // Enable Loading State & Spinner
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
 
       try {
-        // Send email via FormSubmit AJAX service directly to kaltex.alfaz@gmail.com
         await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(DESTINATION_EMAIL)}`, {
           method: 'POST',
           headers: {
@@ -189,12 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
           })
         });
 
-        // Trigger Smooth Animation Transition to Success Card
         setTimeout(() => {
           submitBtn.classList.remove('loading');
           submitBtn.disabled = false;
-
-          // Transition UI
           applyFormContainer.style.display = 'none';
           if (sentEmailDisplay) {
             sentEmailDisplay.textContent = DESTINATION_EMAIL;
@@ -203,11 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
 
       } catch (err) {
-        // Fallback smooth transition
         setTimeout(() => {
           submitBtn.classList.remove('loading');
           submitBtn.disabled = false;
-
           applyFormContainer.style.display = 'none';
           if (sentEmailDisplay) {
             sentEmailDisplay.textContent = DESTINATION_EMAIL;
@@ -218,50 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Reset Apply Form State
+  // Reset Form Button
   if (resetApplyBtn) {
     resetApplyBtn.addEventListener('click', () => {
       if (admissionForm) admissionForm.reset();
-      
-      // Re-enforce locked destination email after reset
       if (targetEmailInput) {
         targetEmailInput.value = DESTINATION_EMAIL;
         targetEmailInput.readOnly = true;
       }
-      
       applySuccessContainer.classList.add('hidden');
       applyFormContainer.style.display = 'block';
       closeModal();
     });
   }
-
-  // Scroll Reveal Animations
-  const observerOptions = {
-    root: null,
-    threshold: 0.15,
-    rootMargin: '0px'
-  };
-
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.reveal').forEach(element => {
-    revealObserver.observe(element);
-  });
-
-  // Smooth Active State Highlight for Navigation
-  const currentLocation = location.href;
-  const menuItems = document.querySelectorAll('.nav-link');
-  menuItems.forEach(item => {
-    if (item.href === currentLocation) {
-      menuItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-    }
-  });
 });
